@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TO-DO REGISTER</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style_register.css' %}"
+    />
+  </head>
+  <body>
+    <div class="heading">
+      <h1>WELCOME TO OUR TO-DO</h1>
+     <h2> MAKE YOU'R DAY <span>PRODUCTIVE</span></h2>
+     <h3> Please Register yourself first!</h3>
+
+     </div>
+    <div class="register-container">
+      <h2>Register</h2>
+      <form method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+              <input type="text" name="username" placeholder="Username" required />
+          </div>
+          <div class="input-group">
+              <input type="password" name="password" placeholder="Password" required />
+          </div>
+          <div class="input-group">
+              <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+          </div>
+          <button type="submit" class="btn">Register</button>
+          {% if error %}
+              <p class="error-message">{{ error }}</p>
+          {% endif %}
+      </form>
+      <p class="login-text">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+    <!-- <script src="index.js"></script> -->
+  </body>
+</html>

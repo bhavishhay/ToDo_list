@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TO-DO LOGIN</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style_edit_task.css' %}"
+    />
+  </head>
+  <body>
+    <div class="heading">
+      <h1>WELCOME <span>@{{user.username}}</span> TO YOUR TO-DO</h1>
+     <h2> MAKE YOU'R DAY <span>PRODUCTIVE</span></h2>
+     </div>
+    <div class="container">
+      <h2>Edit Task</h2>
+      <form method="POST" class="task-form">
+          {% csrf_token %}
+          <input type="text" name="title" value="{{ task.title }}" required class="input-field" />
+          
+          <label class="checkbox-container">
+              <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} />
+              <span class="checkmark"></span> COMPLETED
+          </label>
+          
+          <button type="submit" class="update-btn">Update Task</button>
+      </form>
+
+      <a href="{% url 'task_list' %}" class="back-btn">Back to Tasks</a>
+  </div>
+    <!-- <script src="index.js"></script> -->
+  </body>
+</html>
